@@ -5,7 +5,7 @@ import mapInternals.Room;
 /*
  * The class that hopefully will be able to represent all items and characters
  */
-public class Entity {
+public abstract class Entity {
 	private Room location;
 	/* Maybe add more stuff? */
 	
