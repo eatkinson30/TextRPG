@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import mapInternals.GameMap;
+import rpgObjectClasses.PlayerCharacter;
+
 /*
  * Programmers: Edward Atkinson & Delun Shi
  * Date Started: 2/27/15
@@ -8,6 +11,8 @@ import java.util.Scanner;
  */
 public class MainEntry {
 	static Scanner inputScan = new Scanner(System.in);
+	static PlayerCharacter Protagonist;
+	static GameMap allRooms;
 	
 	public static void main(String[] args)
 	{
@@ -41,12 +46,10 @@ public class MainEntry {
 	
 	private static void showTitle()
 	{}
-	
-	private static void giveStoryIntro()
-	{}
-
 	private static void showMenu()
 	{}
+	private static void giveStoryIntro()
+	{}	
 	
 	private static void takeTurn() // Gets user input and makes stuffs happen based on it
 	{
