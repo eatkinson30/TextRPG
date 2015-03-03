@@ -4,21 +4,40 @@ import mapInternals.Room;
 /*
  * Class for living creatures with health
  */
-public class Actor extends Entity{
-	private int hitpoints;
+public abstract class Actor extends Entity{
+	private int health;
+	private int maxHealth;
+	private int attackPower;
+	private int attackSpeed;
+	private int armor;
 	
-	Actor(Room startingLocation)
+	Actor(Room startingLocation, String name, int health, int attackPower, int attackSpeed, int armor)
 	{
-		super(startingLocation);
+		super(startingLocation, name);
+		this.health = health;
+		this.maxHealth = health;
+		this.attackPower = attackPower;
+		this.attackSpeed = attackSpeed;
+		this.armor = armor;
 	}
 
-	public int getHitpoints()
+	public int Health()
 	{
-		return hitpoints;
+		return health;
 	}
 
-	public void setHitpoints(int hpNew)
+	public int Heal(int healingPower)
 	{
-		hitpoints = hpNew;
+		return health += healingPower;
+	}
+	
+	public int Damage(int damagePower)
+	{
+		return health -= Math.max(damagePower - this.armor, 1);
+	}
+	
+	public void ATTACK(Actor enemy)
+	{
+		enemy.Damage(this.attackPower);
 	}
 }

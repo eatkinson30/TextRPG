@@ -1,7 +1,11 @@
 package main;
 
+import java.util.Scanner;
+
 
 public final class FL {
+	public static Scanner keyboard = new Scanner(System.in);
+	
 	public static enum Direction {
 		NORTH,
 		SOUTH,
@@ -38,5 +42,13 @@ public final class FL {
 		default:
 			return Direction.LOST;
 		}
+	}
+	
+	public static void Print(Object obj) {
+		System.out.print(obj.toString());
+	}
+	
+	public static void PrintLn(Object obj) {
+		System.out.println(obj.toString());
 	}
 }

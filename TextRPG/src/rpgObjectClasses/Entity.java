@@ -7,20 +7,27 @@ import mapInternals.Room;
  */
 public abstract class Entity {
 	private Room location;
+	private String name;
 	/* Maybe add more stuff? */
 	
-	Entity (Room startingLocation)
+	Entity (Room location, String name)
 	{
-		location = startingLocation;
+		this.location = location;
+		this.name = name;
 	}
 	
-	public Room whereBeThis()
+	public Room WhereBeThis()
 	{
 		return location;
 	}
 
-	public void IsNowAt(Room locationNew)
+	public void MoveTo(Room locationNew)
 	{
 		location = locationNew;
+	}
+	
+	public String Name()
+	{
+		return this.name;
 	}
 }

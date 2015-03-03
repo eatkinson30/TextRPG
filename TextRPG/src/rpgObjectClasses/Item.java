@@ -5,9 +5,9 @@ import mapInternals.Room;
 public class Item extends Entity{
 	private boolean carried;
 	
-	Item(Room startingLocation)
+	Item(Room startingLocation, String name)
 	{
-		super(startingLocation);
+		super(startingLocation, name);
 		
 		carried = false;
 	}
