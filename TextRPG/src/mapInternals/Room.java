@@ -1,25 +1,26 @@
 package mapInternals;
 
+import java.util.ArrayList;
+
 public class Room {
 	private int brightness;
 	private boolean[] exitDirections; // 0 - North, 1 - West, 2 - South, 3 - East
+	private ArrayList<Room> exitRooms;
 	
 	Room()
 	{
-		int iterator;
 		
 		brightness = 3;
 		exitDirections = new boolean[4];
 		
-		for (iterator = 0; iterator < 4; ++iterator)
+		for (int i = 0; i < 4; ++i)
 		{
-			exitDirections[iterator] = false;
+			exitDirections[i] = false;
 		}
 	}
 	
-	Room(int lightLevel, boolean northExit, boolean westExit, boolean southExit, boolean eastExit)
+	Room(int lightLevel, Room...rooms)
 	{
-		int iterator;
 		
 		brightness = lightLevel;
 		exitDirections = new boolean[4];
