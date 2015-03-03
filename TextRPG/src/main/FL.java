@@ -10,7 +10,7 @@ public final class FL {
 		LOST
 	}
 	
-	public static Direction 180Deg(Direction start) {
+	public static Direction FlipDirection(Direction start) {
 		switch (start) {
 		case NORTH:
 			return Direction.SOUTH;
@@ -20,6 +20,21 @@ public final class FL {
 			return Direction.WEST;
 		case WEST:
 			return Direction.EAST;
+		default:
+			return Direction.LOST;
+		}
+	}
+	
+	public static Direction RotateDirection(Direction start, boolean clockwise) {
+		switch (start) {
+		case NORTH:
+			return clockwise ? Direction.EAST : Direction.WEST;
+		case SOUTH:
+			return clockwise ? Direction.WEST : Direction.EAST;
+		case EAST:
+			return clockwise ? Direction.SOUTH : Direction.NORTH;
+		case WEST:
+			return clockwise ? Direction.NORTH : Direction.SOUTH;
 		default:
 			return Direction.LOST;
 		}
