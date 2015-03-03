@@ -5,20 +5,22 @@ import java.util.ArrayList;
 public class Room {
 	private String 
 		name,
-		description;
+		desc;
 	private int brightness;
 	private ArrayList<Door> exitDoors = new ArrayList<Door>();
 	
 	Room()
 	{
 		name = "";
-		brightness = 3;
+		desc = "";
+		SetBrightness(3);
 	}
 	
-	Room(String title, int lightLevel)
+	Room(String title, String description, int lightLevel)
 	{
 		name = title;
-		brightness = lightLevel;
+		desc = description;
+		SetBrightness(lightLevel);
 		/*		
 		for (Door exit : doors)
 			exitDoors.add(exit);
@@ -36,5 +38,21 @@ public class Room {
 
 	public void SetName(String title) {
 		name = title;
+	}
+
+	public String GetDescription() {
+		return desc;
+	}
+
+	public void SetDescription(String descriptionNew) {
+		desc = descriptionNew;
+	}
+
+	public int GetBrightness() {
+		return brightness;
+	}
+
+	public void SetBrightness(int brightnessNew) {
+		brightness = brightnessNew;
 	}
 }
