@@ -1,8 +1,8 @@
 package main;
 import java.util.Scanner;
-
 import mapInternals.GameMap;
-import rpgObjectClasses.PlayerCharacter;
+import rpgObjectClasses.HumanPlayer;
+
 
 /*
  * Programmers: Edward Atkinson & Delun Shi
@@ -12,7 +12,7 @@ import rpgObjectClasses.PlayerCharacter;
  */
 public class MainEntry {
 	static Scanner inputScan = new Scanner(System.in);
-	static PlayerCharacter Protagonist;
+	static HumanPlayer Protagonist;
 	static GameMap allRooms;
 	
 	public static void main(String[] args)
