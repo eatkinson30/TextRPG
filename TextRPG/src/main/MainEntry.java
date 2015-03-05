@@ -54,8 +54,18 @@ public class MainEntry {
 	
 	private static void takeTurn() // Gets user input and makes stuffs happen based on it
 	{
-		
-		
-		
+		String entry = FL.InputString("What you want to do?", "exit", "run");
+		switch (entry)
+		{
+		case "exit":
+			System.exit(0);
+			break;
+		case "run":
+			FL.PrintL("You ran");
+			break;
+		default:
+			FL.PrintL("Ooops. my String Input Function is messed up");
+			break;
+		}
 	}
 }

@@ -92,24 +92,35 @@ public abstract class FL {
 		return InputInt(msg, -MAX_INT, MAX_INT);
 	}
 	
-	public static String InputString(String msg, String...acceptedValues)
+	public static String InputString(String msg, String...strParams)
 	{
 		String value;
-	    Print(msg);
+		ArrayList<String> acceptedValues = new ArrayList<String>();
+		for (int i = 0; i < strParams.length; i++)
+			if (!strParams[i].equals(""))
+				acceptedValues.add(strParams[i]);
 	    do
 	    {
-	    	while (!keyboard.hasNext()) {
-	    		PrintL("STRING NOT ENTERED!\n" + msg);
+		    Print(msg);
+	    	while (!keyboard.hasNextLine()) {
+	    		PrintL("STRING NOT ENTERED!");
 	    		keyboard.next(); // this is important!
 	    	}
 		    value = keyboard.next();
-	    } while (acceptedValues == null || acceptedValues.length == 0 || Contains(acceptedValues, true, value) == -1);
+		    if ((acceptedValues == null || acceptedValues.isEmpty() || Contains(ConvertArrayListToArray(acceptedValues), true, value) != -1))
+		    	break;
+		    else
+		    {
+		    	PrintL("VALID STRING NOT ENTERED! Accepted values are " + StringifyArray(ConvertArrayListToArray(acceptedValues)));
+		    	continue;
+		    }
+	    } while (true);
 		return value;
 	}
 	
 	public static String InputString(String msg)
 	{
-		return InputString(msg);
+		return InputString(msg, "");
 	}
 	
 	public static void DisplayError(Object errorMsg, String errorTitle) {
@@ -264,6 +275,12 @@ public abstract class FL {
 			break;
 		}
 		return str;
+	}
+	
+	public static String[] ConvertArrayListToArray(ArrayList<String> arr) {
+		String[] strArr = new String[arr.size()];
+		arr.toArray(strArr);
+		return strArr;
 	}
 	
 	public static int Contains(String[] arr, boolean ignoreCase, String...check) {
