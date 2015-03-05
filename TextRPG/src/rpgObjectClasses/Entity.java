@@ -24,6 +24,7 @@ public abstract class Entity {
 	public void MoveTo(Room locationNew)
 	{
 		location = locationNew;
+		location.Enter();
 	}
 	
 	public String Name()

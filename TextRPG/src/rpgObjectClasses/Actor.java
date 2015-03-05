@@ -1,5 +1,6 @@
 package rpgObjectClasses;
 
+import main.FL;
 import mapInternals.Room;
 /*
  * Class for living creatures with health
@@ -28,16 +29,25 @@ public abstract class Actor extends Entity{
 
 	public int Heal(int healingPower)
 	{
-		return health += healingPower;
+		return this.health = Math.min(this.health + healingPower, this.maxHealth);
 	}
 	
-	public int Damage(int damagePower)
+	public int Damage(int damagePower, Actor attacker)
 	{
-		return health -= Math.max(damagePower - this.armor, 1);
+		int damagePowerWithArmor = Math.max(damagePower - this.armor, 1);
+		this.health = Math.min(this.health - damagePowerWithArmor, 0);
+		if (this.health == 0)
+			this.Die(attacker);
+		return this.health;
 	}
 	
 	public void ATTACK(Actor enemy)
 	{
-		enemy.Damage(this.attackPower);
+		enemy.Damage(this.attackPower, this);
+	}
+	
+	public void Die(Actor attacker)
+	{
+		FL.PrintLn(attacker.Name() + " has slain " + this.Name());
 	}
 }

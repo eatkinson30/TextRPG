@@ -1,6 +1,7 @@
 package mapInternals;
 
 import java.util.ArrayList;
+import rpgObjectClasses.Item;
 
 public class Room {
 	private String 
@@ -8,6 +9,7 @@ public class Room {
 		desc;
 	private int brightness;
 	private ArrayList<Door> exitDoors = new ArrayList<Door>();
+	private ArrayList<Item> items = new ArrayList<Item>();
 	
 	Room()
 	{
@@ -54,5 +56,10 @@ public class Room {
 
 	public void SetBrightness(int brightnessNew) {
 		brightness = brightnessNew;
+	}
+	
+	public void Enter()
+	{
+		
 	}
 }
