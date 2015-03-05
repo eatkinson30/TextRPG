@@ -1,6 +1,6 @@
 package rpgObjectClasses;
 
-import main.FL;
+import main.FLOld;
 import mapInternals.Room;
 /*
  * Class for living creatures with health
@@ -48,6 +48,6 @@ public abstract class Actor extends Entity{
 	
 	public void Die(Actor attacker)
 	{
-		FL.PrintLn(attacker.Name() + " has slain " + this.Name());
+		FLOld.PrintLn(attacker.Name() + " has slain " + this.Name());
 	}
 }
