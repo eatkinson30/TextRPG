@@ -1,5 +1,9 @@
 package rpgObjectClasses;
 
+import items.Item;
+
+import java.util.ArrayList;
+
 import main.FL;
 import mapInternals.Room;
 /*
@@ -11,6 +15,7 @@ public abstract class Actor extends Entity{
 	private int attackPower;
 	private int attackSpeed;
 	private int armor;
+	private ArrayList<Item> items;
 	
 	Actor(Room startingLocation, String name, int health, int attackPower, int attackSpeed, int armor)
 	{
@@ -20,6 +25,7 @@ public abstract class Actor extends Entity{
 		this.attackPower = attackPower;
 		this.attackSpeed = attackSpeed;
 		this.armor = armor;
+		this.items = new ArrayList<Item>();
 	}
 
 	public int Health()
@@ -49,5 +55,11 @@ public abstract class Actor extends Entity{
 	public void Die(Actor attacker)
 	{
 		FL.PrintL(attacker.Name() + " has slain " + this.Name());
+	}
+	
+	public void PickUpItem(Item item)
+	{
+		items.add(item);
+		FL.PrintL(this.Name() + "has picked up a " + item.Name());
 	}
 }

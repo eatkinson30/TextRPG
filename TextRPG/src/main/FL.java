@@ -8,13 +8,7 @@ package main;
 
 import java.text.NumberFormat;
 import java.util.*;
-import java.awt.Dimension;
-import java.awt.GraphicsEnvironment;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.lang.Character;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public abstract class FL {

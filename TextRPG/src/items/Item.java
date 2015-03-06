@@ -1,14 +1,31 @@
 package items;
 
-public abstract class Item {
-	private double weight;
-	private String name;
+import rpgObjectClasses.Entity;
+import mapInternals.Room;
+
+public abstract class Item extends Entity
+{
+	private boolean carried;
 	
-	public Item(String name, double weight) {
-		this.name = name;
-		this.weight = weight;
+	Item(Room startingLocation, String name)
+	{
+		super(startingLocation, name);
+		
+		carried = false;
+	}
+
+	public void pickedUp()
+	{
+		carried = true;
 	}
 	
-	public abstract void Use();
-
+	public void dropped()
+	{
+		carried = false;
+	}
+	
+	public boolean isCarried()
+	{
+		return carried;
+	}
 }

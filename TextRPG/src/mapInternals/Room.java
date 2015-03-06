@@ -1,7 +1,7 @@
 package mapInternals;
 
 import java.util.ArrayList;
-import rpgObjectClasses.Item;
+import items.Item;
 
 public class Room {
 	private String 

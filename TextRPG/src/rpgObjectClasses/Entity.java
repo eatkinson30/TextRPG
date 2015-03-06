@@ -10,7 +10,7 @@ public abstract class Entity {
 	private String name;
 	/* Maybe add more stuff? */
 	
-	Entity (Room location, String name)
+	public Entity (Room location, String name)
 	{
 		this.location = location;
 		this.name = name;
