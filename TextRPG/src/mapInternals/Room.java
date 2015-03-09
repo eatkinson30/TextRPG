@@ -18,6 +18,13 @@ public class Room {
 		SetBrightness(3);
 	}
 	
+	Room(String title, String description)
+	{
+		name = title;
+		desc = description;
+		SetBrightness(3);
+	}
+	
 	Room(String title, String description, int lightLevel)
 	{
 		name = title;
