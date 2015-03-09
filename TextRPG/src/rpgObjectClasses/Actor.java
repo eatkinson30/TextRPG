@@ -10,12 +10,12 @@ import mapInternals.Room;
  * Class for living creatures with health
  */
 public abstract class Actor extends Entity{
-	private int health;
-	private int maxHealth;
-	private int attackPower;
-	private int attackSpeed;
-	private int armor;
-	private ArrayList<Item> items;
+	protected int health;
+	protected int maxHealth;
+	protected int attackPower;
+	protected int attackSpeed;
+	protected int armor;
+	protected ArrayList<Item> items;
 	
 	Actor(Room startingLocation, String name, int health, int attackPower, int attackSpeed, int armor)
 	{

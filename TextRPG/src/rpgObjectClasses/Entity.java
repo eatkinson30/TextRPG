@@ -6,8 +6,8 @@ import mapInternals.Room;
  * The class that hopefully will be able to represent all items and characters
  */
 public abstract class Entity {
-	private Room location;
-	private String name;
+	protected Room location;
+	protected String name;
 	/* Maybe add more stuff? */
 	
 	public Entity (Room location, String name)
