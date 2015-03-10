@@ -24,7 +24,7 @@ public class GameMap {
 		ARMORCELL = 8,
 		SERVERROOM = 9,
 		LAB = 10,
-		TUNNEL = 10;
+		TUNNEL = 11;
 	
 		
 	GameMap()
