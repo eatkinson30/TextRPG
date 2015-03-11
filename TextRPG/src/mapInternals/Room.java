@@ -3,7 +3,7 @@ package mapInternals;
 import java.util.ArrayList;
 
 import main.FL;
-import rpgObjectClasses.HumanPlayer;
+import rpgObjectClasses.*;
 import items.Item;
 
 public class Room {
@@ -13,6 +13,8 @@ public class Room {
 	private int brightness;
 	private ArrayList<Door> exitDoors = new ArrayList<Door>();
 	private ArrayList<Item> items = new ArrayList<Item>();
+	
+	private ArrayList<String> playerChoices = new ArrayList<String>();
 	
 	Room()
 	{
@@ -68,13 +70,13 @@ public class Room {
 		brightness = brightnessNew;
 	}
 	
-	public void Enter(HumanPlayer p)
+	public void Enter(Actor p)
 	{
 		FL.PrintL(p.Name() + " has entered the " + this.name + ": " + this.desc);
 	}
 	
 	public void PlayerInput(HumanPlayer p)
 	{
-		
+		String choice = FL.InputString("What would you like to do?", playerChoices);
 	}
 }

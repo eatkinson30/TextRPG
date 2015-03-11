@@ -86,13 +86,9 @@ public abstract class FL {
 		return InputInt(msg, -MAX_INT, MAX_INT);
 	}
 	
-	public static String InputString(String msg, String...strParams)
+	public static String InputString(String msg, ArrayList<String> acceptedValues)
 	{
 		String value;
-		ArrayList<String> acceptedValues = new ArrayList<String>();
-		for (int i = 0; i < strParams.length; i++)
-			if (!strParams[i].equals(""))
-				acceptedValues.add(strParams[i]);
 	    do
 	    {
 		    Print(msg);
@@ -110,6 +106,15 @@ public abstract class FL {
 		    }
 	    } while (true);
 		return value;
+	}
+	
+	public static String InputString(String msg, String...strParams)
+	{
+		ArrayList<String> acceptedValues = new ArrayList<String>();
+		for (int i = 0; i < strParams.length; i++)
+			if (!strParams[i].equals(""))
+				acceptedValues.add(strParams[i]);
+		return InputString(msg, acceptedValues);
 	}
 	
 	public static String InputString(String msg)

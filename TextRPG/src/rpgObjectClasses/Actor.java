@@ -26,7 +26,7 @@ public abstract class Actor extends Entity{
 	public void MoveTo(Room locationNew)
 	{
 		location = locationNew;
-		location.Enter();
+		location.Enter(this);
 	}
 	
 	Actor(Room startingLocation, String name, int health, int attackPower, int attackSpeed, int armor)
