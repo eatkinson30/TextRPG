@@ -16,10 +16,23 @@ public abstract class Actor extends Entity{
 	protected int attackSpeed;
 	protected int armor;
 	protected ArrayList<Item> items;
+	protected Room location;
+	
+	public Room WhereBeThis()
+	{
+		return location;
+	}
+
+	public void MoveTo(Room locationNew)
+	{
+		location = locationNew;
+		location.Enter();
+	}
 	
 	Actor(Room startingLocation, String name, int health, int attackPower, int attackSpeed, int armor)
 	{
-		super(startingLocation, name);
+		super(name);
+		location = startingLocation;
 		this.health = health;
 		this.maxHealth = health;
 		this.attackPower = attackPower;
