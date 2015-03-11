@@ -1,6 +1,9 @@
 package mapInternals;
 
 import java.util.ArrayList;
+
+import main.FL;
+import rpgObjectClasses.HumanPlayer;
 import items.Item;
 
 public class Room {
@@ -65,7 +68,12 @@ public class Room {
 		brightness = brightnessNew;
 	}
 	
-	public void Enter()
+	public void Enter(HumanPlayer p)
+	{
+		FL.PrintL(p.Name() + " has entered the " + this.name + ": " + this.desc);
+	}
+	
+	public void PlayerInput(HumanPlayer p)
 	{
 		
 	}

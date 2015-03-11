@@ -10,7 +10,7 @@ public class HumanPlayer extends Actor {
 	
 	public void Start()
 	{
-		this.location.Enter();
+		this.location.Enter(this);
 	}
 
 }

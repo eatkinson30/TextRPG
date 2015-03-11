@@ -30,35 +30,7 @@ public class MainEntry {
 	
 	public static void main(String[] args) throws IOException
 	{
-		gameStrings = new Hashtable<String, String>();
-		gameStringsFile = new BufferedReader(new FileReader("gameStringsFile.txt")); 
-
-		boolean continueLastLine = false;
-		String lastKey = "";
-		while (gameStringsFile.ready()) 
-		{
-			String line = gameStringsFile.readLine();
-			String[] parts = line.split(":");
-			if (parts.length > 1)
-			{
-				gameStrings.put(parts[0], parts[1]);
-				lastKey = parts[0];
-			}
-			else if (parts.length > 0 && continueLastLine && !lastKey.equals(""))
-			{
-				gameStrings.put(lastKey, gameStrings.get(lastKey) + '\n' + line);
-			}
-			else
-			{
-				continueLastLine = false;
-				lastKey = "";
-			}
-			if (line.endsWith(">"))
-				continueLastLine = true;
-			else
-				continueLastLine = false;
-		}
-		gameStringsFile.close();
+		ReadGameStringsFile();
 		
 		
 		boolean
@@ -70,7 +42,7 @@ public class MainEntry {
 		
 		gameMap = new GameMap();
 		
-		protagonist= new HumanPlayer(gameMap.GetRoom(GameMap.LOBBY), FL.InputString("What is your name?"), 100, 100, 100, 100);
+		protagonist = new HumanPlayer(gameMap.GetRoom(GameMap.LOBBY), FL.InputString("What is your name?"), 100, 100, 100, 100);
 		
 		showTitle();
 		
@@ -109,6 +81,8 @@ public class MainEntry {
 	
 	private static void takeTurn() // Gets user input and makes stuffs happen based on it
 	{
+		protagonist.WhereBeThis().PlayerInput(protagonist);
+		/*
 		String entry = FL.InputString("What you want to do? ", "exit", "run");
 		switch (entry)
 		{
@@ -122,5 +96,39 @@ public class MainEntry {
 			FL.PrintL("Ooops. my String Input Function is messed up");
 			break;
 		}
+		*/
+	}
+	
+	private static void ReadGameStringsFile() throws IOException
+	{
+		gameStrings = new Hashtable<String, String>();
+		gameStringsFile = new BufferedReader(new FileReader("gameStringsFile.txt")); 
+
+		boolean continueLastLine = false;
+		String lastKey = "";
+		while (gameStringsFile.ready()) 
+		{
+			String line = gameStringsFile.readLine();
+			String[] parts = line.split(":");
+			if (parts.length > 1)
+			{
+				gameStrings.put(parts[0], parts[1]);
+				lastKey = parts[0];
+			}
+			else if (parts.length > 0 && continueLastLine && !lastKey.equals(""))
+			{
+				gameStrings.put(lastKey, gameStrings.get(lastKey) + '\n' + line);
+			}
+			else
+			{
+				continueLastLine = false;
+				lastKey = "";
+			}
+			if (line.endsWith(">"))
+				continueLastLine = true;
+			else
+				continueLastLine = false;
+		}
+		gameStringsFile.close();
 	}
 }
