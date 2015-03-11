@@ -9,7 +9,7 @@ public abstract class Item extends Entity
 	
 	Item(Room startingLocation, String name)
 	{
-		super(startingLocation, name);
+		super(name);
 		
 		carried = false;
 	}
