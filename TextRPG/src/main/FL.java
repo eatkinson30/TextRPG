@@ -86,9 +86,11 @@ public abstract class FL {
 		return InputInt(msg, -MAX_INT, MAX_INT);
 	}
 	
-	public static String InputString(String msg, ArrayList<String> acceptedValues)
+	public static String InputString(String msg, boolean showAcceptedValues, ArrayList<String> acceptedValues)
 	{
 		String value;
+		if (showAcceptedValues)
+			msg += StringifyArray(acceptedValues);
 	    do
 	    {
 		    Print(msg);
@@ -110,16 +112,28 @@ public abstract class FL {
 	
 	public static String InputString(String msg, String...strParams)
 	{
+		return InputString(msg, false, strParams);
+	}
+	
+	public static String InputString(String msg, ArrayList<String> acceptedValues)
+	{
+		return InputString(msg, false, acceptedValues);
+	}
+	
+	
+	
+	public static String InputString(String msg, boolean showAcceptedValues, String...strParams)
+	{
 		ArrayList<String> acceptedValues = new ArrayList<String>();
 		for (int i = 0; i < strParams.length; i++)
 			if (!strParams[i].equals(""))
 				acceptedValues.add(strParams[i]);
-		return InputString(msg, acceptedValues);
+		return InputString(msg, showAcceptedValues, acceptedValues);
 	}
 	
 	public static String InputString(String msg)
 	{
-		return InputString(msg, "");
+		return InputString(msg, false, "");
 	}
 	
 	public static void DisplayError(Object errorMsg, String errorTitle) {
@@ -167,7 +181,7 @@ public abstract class FL {
 		else
 			return plural;
 	}
-	
+	/*
 	public static String StringifyArray(int[] data) {
 		if (data.length == 0)
 			return "EMPTY";
@@ -183,8 +197,9 @@ public abstract class FL {
 			return str;
 		}
 	}
+	*/
 	
-	public static String StringifyArray(ArrayList<Integer> data) {
+	public static String StringifyArray(ArrayList<String> data) {
 		if (data.size() == 0)
 			return "EMPTY";
 		else {
