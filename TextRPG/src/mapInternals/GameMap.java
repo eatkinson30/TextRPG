@@ -8,8 +8,8 @@ import main.FL.Direction;
  * Contains all the rooms in the game using an array or something like that
  */
 public class GameMap {
-	private ArrayList<Room> rooms;
-	private ArrayList<Door> doors;
+	private static ArrayList<Room> rooms;
+	private static ArrayList<Door> doors;
 	public static final int howManyRooms = 25; // it could be any other number we decide
 	
 	public static final int
@@ -27,7 +27,7 @@ public class GameMap {
 		TUNNEL = 11;
 	
 		
-	public GameMap()
+	public static void _GameMap()
 	{
 		Door temp;
 		
@@ -94,8 +94,8 @@ public class GameMap {
 		rooms.get(5).GetAllDoors().add(temp);
 	}
 	
-	public Room GetRoom(int index)
+	public static Room GetRoom(int index)
 	{
-		return this.rooms.get(index);
+		return rooms.get(index);
 	}
 }
