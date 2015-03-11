@@ -18,15 +18,15 @@ import rpgObjectClasses.HumanPlayer;
  * This will be where our main function will be
  */
 public class MainEntry {
-	static Scanner inputScan = new Scanner(System.in);
-	static HumanPlayer protagonist;
-	static GameMap gameMap;
+	public static Scanner inputScan = new Scanner(System.in);
+	public static HumanPlayer protagonist;
+	public static GameMap gameMap;
 	static Hashtable<String, String> gameStrings;
 	
-	static BufferedReader gameStringsFile;
+	public static BufferedReader gameStringsFile;
 	
-	static final String kTITLE = "title";
-	static final String kINTRO = "intro";
+	public static final String kTITLE = "title";
+	public static final String kINTRO = "intro";
 	
 	public static void main(String[] args) throws IOException
 	{
@@ -67,6 +67,10 @@ public class MainEntry {
 		
 		exploring = true;
 		continuingPlay = false;
+		
+		gameMap = new GameMap();
+		
+		protagonist= new HumanPlayer(gameMap.GetRoom(GameMap.LOBBY), FL.InputString("What is your name?"), 100, 100, 100, 100);
 		
 		showTitle();
 		

@@ -27,48 +27,48 @@ public class GameMap {
 		TUNNEL = 11;
 	
 		
-	GameMap()
+	public GameMap()
 	{
 		Door temp;
 		
-		rooms = new ArrayList<> (howManyRooms);
-		doors = new ArrayList<> (25);
+		rooms = new ArrayList<Room>(25);
+		doors = new ArrayList<Door>(25);
 		
 		// Initializes Rooms //
-		rooms.set(LOBBY, new Room("Lobby", // 0
+		rooms.add(LOBBY, new Room("Lobby", // 0
 				"This is the main lobby of facility 57. The main entrance lies to the north", 3));
 		
-		rooms.set(WESTWING, new Room("West Wing", // 1
+		rooms.add(WESTWING, new Room("West Wing", // 1
 				""));
 		
-		rooms.set(LIBRARY, new Room("Library", // 2
+		rooms.add(LIBRARY, new Room("Library", // 2
 				""));
 		
-		rooms.set(BROOMCLOSET, new Room("Broom Closet", // 3
+		rooms.add(BROOMCLOSET, new Room("Broom Closet", // 3
 				""));
 		
-		rooms.set(WESTHALL, new Room("West Hall", // 4
+		rooms.add(WESTHALL, new Room("West Hall", // 4
 				""));
 		
-		rooms.set(ROBOTCELL, new Room("Robot Cell", // 5
+		rooms.add(ROBOTCELL, new Room("Robot Cell", // 5
 				""));
 		
-		rooms.set(SOUTHHALL, new Room("Southern Hallway", // 6
+		rooms.add(SOUTHHALL, new Room("Southern Hallway", // 6
 				""));
 		
-		rooms.set(COURTYARD, new Room("Courtyard", // 7
+		rooms.add(COURTYARD, new Room("Courtyard", // 7
 				""));
 		
-		rooms.set(ARMORCELL, new Room("Armor Statue Cell", // 8
+		rooms.add(ARMORCELL, new Room("Armor Statue Cell", // 8
 				""));
 		
-		rooms.set(SERVERROOM, new Room("Server Room", // 9
+		rooms.add(SERVERROOM, new Room("Server Room", // 9
 				""));
 		
-		rooms.set(LAB, new Room("Laboratory", // 10
+		rooms.add(LAB, new Room("Laboratory", // 10
 				""));
 		
-		rooms.set(TUNNEL, new Room("Tunnel", // 11
+		rooms.add(TUNNEL, new Room("Tunnel", // 11
 				""));
 		
 		// Creates doors to connect the rooms //
@@ -92,5 +92,10 @@ public class GameMap {
 		temp = new Door(rooms.get(4), rooms.get(5), Direction.SOUTH, Direction.NORTH); // Connects West Hall and Robot Cell
 		rooms.get(4).GetAllDoors().add(temp);
 		rooms.get(5).GetAllDoors().add(temp);
+	}
+	
+	public Room GetRoom(int index)
+	{
+		return this.rooms.get(index);
 	}
 }

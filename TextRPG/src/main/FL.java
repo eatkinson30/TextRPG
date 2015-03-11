@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 public abstract class FL {
 	
-	static Scanner keyboard = new Scanner(System.in);
+	static Scanner keyboard = MainEntry.inputScan;
 	static final int MAX_INT = Integer.MAX_VALUE;//2147483647;
 	static NumberFormat formatCurrency = NumberFormat.getCurrencyInstance();
 	static Random rand = new Random();
@@ -100,7 +100,7 @@ public abstract class FL {
 	    		PrintL("STRING NOT ENTERED!");
 	    		keyboard.next(); // this is important!
 	    	}
-		    value = keyboard.next();
+		    value = keyboard.nextLine();
 		    if ((acceptedValues == null || acceptedValues.isEmpty() || Contains(ConvertArrayListToArray(acceptedValues), true, value) != -1))
 		    	break;
 		    else
@@ -220,6 +220,8 @@ public abstract class FL {
 	}
 	
 	public static String AddNumberEnding(int num) {
+		/*
+	}
 		String str = "", oldStr = String.valueOf(num);
 		for (int i = 0; i < oldStr.length(); i++)
 			if (oldStr.charAt(i) != 0)
@@ -230,7 +232,10 @@ public abstract class FL {
 		for (int i = str.length() - 1; i >= lowerBound; i--) {
 			num -= Integer.parseInt(String.valueOf(str.charAt(i))) * Math.pow(10, i);
 		}
-		switch (num) {
+		*/
+		String str = String.valueOf(num);
+		int remainder = num % 10 + (((num / 10) % 10) * 10);
+		switch (remainder) {
 		case 1:
 		case 21:
 		case 31:
