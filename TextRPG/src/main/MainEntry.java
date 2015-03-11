@@ -20,7 +20,6 @@ import rpgObjectClasses.HumanPlayer;
 public class MainEntry {
 	public static Scanner inputScan = new Scanner(System.in);
 	public static HumanPlayer protagonist;
-	public static GameMap gameMap;
 	static Hashtable<String, String> gameStrings;
 	
 	public static BufferedReader gameStringsFile;
@@ -40,9 +39,9 @@ public class MainEntry {
 		exploring = true;
 		continuingPlay = false;
 		
-		gameMap = new GameMap();
+		GameMap._GameMap();
 		
-		protagonist = new HumanPlayer(gameMap.GetRoom(GameMap.LOBBY), FL.InputString("What is your name?"), 100, 100, 100, 100);
+		protagonist = new HumanPlayer(GameMap.GetRoom(GameMap.LOBBY), FL.InputString("What is your name?"), 100, 100, 100, 100);
 		
 		showTitle();
 		
