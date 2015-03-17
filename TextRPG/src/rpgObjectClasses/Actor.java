@@ -1,6 +1,7 @@
 package rpgObjectClasses;
 
 import items.Item;
+import items.ItemCarrier;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import mapInternals.Room;
 /*
  * Class for living creatures with health
  */
-public abstract class Actor extends Entity{
+public abstract class Actor extends Entity implements ItemCarrier{
 	protected int health;
 	protected int maxHealth;
 	protected int attackPower;
@@ -74,5 +75,15 @@ public abstract class Actor extends Entity{
 	{
 		items.add(item);
 		FL.PrintL(this.Name() + "has picked up a " + item.Name());
+	}
+	
+	// Item Functions //
+	public void addItem(Item theThing)
+	{
+		items.add(theThing);
+	}
+	public void removeItem(Item theThing)
+	{
+		items.remove(theThing);
 	}
 }

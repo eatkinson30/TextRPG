@@ -41,6 +41,8 @@ public class Room {
 		*/
 	}
 	
+	// Getters and Setters //
+	
 	public ArrayList<Door> GetAllDoors()
 	{
 		return exitDoors;
@@ -69,6 +71,17 @@ public class Room {
 	public void SetBrightness(int brightnessNew) {
 		brightness = brightnessNew;
 	}
+	// Getters and Setters (end) //
+	
+	// Item Functions //
+	public void addItem(Item theThing)
+	{
+		items.add(theThing);
+	}
+	public void removeItem(Item theThing)
+	{
+		items.remove(theThing);
+	}	
 	
 	public void Enter(Actor p)
 	{
