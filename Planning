@@ -1,0 +1,8 @@
+Okay, so I think I have an idea of how we're going to implement our game objects.
+
+Entity is the base class for anything that's going to appear in a room
+
+Actors store their own location and moving them changes their location field
+
+Items are dependent on the rooms that they are in or the actors carrying them, and so they don't need a location field
+Moving items consist of the adding and removing them from room and actor inventories
