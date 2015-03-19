@@ -35,6 +35,24 @@ public abstract class FL {
 		LOST
 	}
 	
+	public static String StringDirection(Direction d)
+	{
+		switch(d)
+		{
+		case NORTH:
+			return "North";
+		case SOUTH:
+			return "South";
+		case WEST:
+			return "West";
+		case EAST:
+			return "East";
+		case LOST:
+		default:
+			return "You are hopelessly LOST";
+		}
+	}
+	
 	public static Direction FlipDirection(Direction start) {
 		switch (start) {
 		case NORTH:
