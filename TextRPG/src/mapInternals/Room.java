@@ -1,6 +1,7 @@
 package mapInternals;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import main.FL;
 import rpgObjectClasses.*;
@@ -99,9 +100,10 @@ public class Room implements ItemCarrier {
 	
 	public void PlayerInput(HumanPlayer p)
 	{
-		String choice = FL.InputString("What would you like to do?", playerChoices);
+		playerChoices = new ArrayList<String>(Arrays.asList("Move", "Fight"));
+		int choice = FL.InputInt("What would you like to do?" + FL.StringifyArrayWithNumbers(playerChoices), 1, playerChoices.size());
 		
-		
+		FL.PrintL("You chose to " + playerChoices.get(choice - 1));
 		
 	}
 }

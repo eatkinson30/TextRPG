@@ -199,6 +199,24 @@ public abstract class FL {
 	}
 	*/
 	
+	public static String StringifyArrayWithNumbers(ArrayList<String> data) {
+		if (data.size() == 0)
+			return "EMPTY";
+		else {
+			String str = "[";
+			for (int i = 0; i < data.size(); i++) {
+				str += String.valueOf(i + 1) + ". ";
+				str += String.valueOf(data.get(i));
+				if (i < data.size() - 1)
+					str += ", ";
+				else
+					str += "]";
+			}
+			return str;
+		}
+	}
+	
+	
 	public static String StringifyArray(ArrayList<String> data) {
 		if (data.size() == 0)
 			return "EMPTY";
