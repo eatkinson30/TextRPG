@@ -5,12 +5,11 @@ import mapInternals.Room;
 
 public abstract class Item extends Entity
 {
-	private boolean carried;
+	protected boolean carried;
 	
 	Item(Room startingLocation, String name)
 	{
 		super(name);
-		
 		
 		
 		carried = false;
@@ -29,5 +28,11 @@ public abstract class Item extends Entity
 	public boolean isCarried()
 	{
 		return carried;
+	}
+	
+	static public void move(Item theThing, ItemCarrier source, ItemCarrier destination) // Moves item from source into the destination
+	{
+		source.removeItem(theThing);
+		destination.addItem(theThing);
 	}
 }
