@@ -11,6 +11,8 @@ public abstract class Item extends Entity
 	{
 		super(name);
 		
+		
+		
 		carried = false;
 	}
 

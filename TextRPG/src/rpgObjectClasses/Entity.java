@@ -1,7 +1,5 @@
 package rpgObjectClasses;
 
-import mapInternals.Room;
-
 /*
  * The class that hopefully will be able to represent all items and characters
  */

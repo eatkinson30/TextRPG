@@ -1,5 +1,7 @@
 package rpgObjectClasses;
 
+import items.Item;
+import items.ItemCarrier;
 import mapInternals.Room;
 
 public class HumanPlayer extends Actor {
@@ -12,5 +14,7 @@ public class HumanPlayer extends Actor {
 	{
 		this.location.Enter(this);
 	}
+
+	
 
 }
