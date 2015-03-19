@@ -14,7 +14,4 @@ public class HumanPlayer extends Actor {
 	{
 		this.location.Enter(this);
 	}
-
-	
-
 }

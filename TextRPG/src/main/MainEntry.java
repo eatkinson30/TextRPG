@@ -13,6 +13,7 @@ import rpgObjectClasses.HumanPlayer;
 
 /*
  * Programmers: Edward Atkinson & Delun Shi
+ * Text Adventure RPG
  * Date Started: 2/27/15
  * 
  * This will be where our main function will be
