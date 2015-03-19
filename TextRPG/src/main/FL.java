@@ -22,6 +22,10 @@ public abstract class FL {
 		System.out.print(msg.toString());
 	}
 	
+	public static void Print(char c) {
+		Print(String.valueOf(c));
+	}
+	
 	public static void PrintL(Object msg) {
 		Print(msg.toString() + "\n");
 	}

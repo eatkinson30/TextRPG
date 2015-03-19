@@ -130,8 +130,10 @@ public class Room implements ItemCarrier {
 			
 			break;
 		case ITEM:
+			System.exit(11);
 			break;
 		case FIGHT:
+			System.exit(0);
 			break;
 		default:
 				

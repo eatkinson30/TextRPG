@@ -32,7 +32,6 @@ public class MainEntry {
 	{
 		ReadGameStringsFile();
 		
-		
 		boolean
 			exploring,
 			continuingPlay;
