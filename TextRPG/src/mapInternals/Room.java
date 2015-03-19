@@ -83,8 +83,12 @@ public class Room implements ItemCarrier {
 	{
 		items.remove(theThing);
 	}
-	public boolean hasItem(Item theThing) {
-		
+	public boolean hasItem(Item theThing)
+	{
+		for (Item item : items) {
+			if (item.equals(theThing))
+				return true;
+		}
 		return false;
 	}
 	
@@ -96,5 +100,8 @@ public class Room implements ItemCarrier {
 	public void PlayerInput(HumanPlayer p)
 	{
 		String choice = FL.InputString("What would you like to do?", playerChoices);
+		
+		
+		
 	}
 }
