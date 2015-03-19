@@ -26,6 +26,10 @@ public abstract class FL {
 		Print(msg.toString() + "\n");
 	}
 	
+	public static void PrintL() {
+		Print('\n');
+	}
+	
 	
 	public static enum Direction {
 		NORTH,

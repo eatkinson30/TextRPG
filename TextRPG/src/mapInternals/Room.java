@@ -16,7 +16,13 @@ public class Room implements ItemCarrier {
 	private ArrayList<Door> exitDoors = new ArrayList<Door>();
 	private ArrayList<Item> items = new ArrayList<Item>();
 	
-	private ArrayList<String> playerChoices = new ArrayList<String>();
+	private static final ArrayList<String> playerChoices = new ArrayList<String>(Arrays.asList("Move", "Item", "Fight"));
+	private static final int 
+		MOVE = 0,
+		ITEM = 1,
+		FIGHT = 2,
+		OTHER = 3;
+	
 	
 	Room()
 	{
@@ -42,7 +48,6 @@ public class Room implements ItemCarrier {
 			exitDoors.add(exit);
 		*/
 	}
-	
 	// Getters and Setters //
 	
 	public ArrayList<Door> GetAllDoors()
@@ -100,10 +105,39 @@ public class Room implements ItemCarrier {
 	
 	public void PlayerInput(HumanPlayer p)
 	{
-		playerChoices = new ArrayList<String>(Arrays.asList("Move", "Fight"));
-		int choice = FL.InputInt("What would you like to do?" + FL.StringifyArrayWithNumbers(playerChoices), 1, playerChoices.size());
+		int i;
+		int choice = FL.InputInt("What would you like to do? " + FL.StringifyArrayWithNumbers(playerChoices), 1, playerChoices.size());
+		ArrayList<String> optionMsgs = new ArrayList<>();
 		
-		FL.PrintL("You chose to " + playerChoices.get(choice - 1));
+		--choice; // changes 1 based to 0 based indexing
+		
+		FL.PrintL("You chose to " + playerChoices.get(choice));
+		
+		switch(choice)
+		{
+		case MOVE:
+			for (i = 0; i < exitDoors.size(); ++i)
+			{
+				String otherRoom = exitDoors.get(i).GetOtherRoom(this).GetName();
+				String otherDirection = FL.StringDirection(exitDoors.get(i).GetOtherDirection(this));
+				optionMsgs.add(otherDirection + " to " + otherRoom);
+			}
+			
+			choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs), 1, optionMsgs.size());
+			--choice; // changes 1 based to 0 based indexing
+			
+			p.MoveTo(exitDoors.get(choice).GetOtherRoom(this));			
+			
+			break;
+		case ITEM:
+			break;
+		case FIGHT:
+			break;
+		default:
+				
+		}
+		
+		
 		
 	}
 }

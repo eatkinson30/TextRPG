@@ -82,6 +82,7 @@ public class MainEntry {
 	
 	private static void takeTurn() // Gets user input and makes stuffs happen based on it
 	{
+		FL.PrintL();
 		protagonist.WhereBeThis().PlayerInput(protagonist);
 		/*
 		String entry = FL.InputString("What you want to do? ", "exit", "run");

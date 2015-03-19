@@ -43,4 +43,26 @@ public class Door {
 	public void SetRoom2(Room room2) {
 		this.room2 = room2;
 	}
+	
+	public Room GetOtherRoom(Room test)
+	{
+		if (test.equals(room1))
+			return room2;
+		else if (test.equals(room2))
+			return room1;
+		else
+			// Complain //
+			return null;
+	}
+	
+	public FL.Direction GetOtherDirection(Room test)
+	{
+		if (test.equals(room1))
+			return directionOnetoTwo;
+		else if (test.equals(room2))
+			return directionTwoToOne;
+		else
+			// Complain //
+			return null;
+	}
 }
