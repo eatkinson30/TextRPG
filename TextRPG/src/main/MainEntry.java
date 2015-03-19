@@ -48,10 +48,11 @@ public class MainEntry {
 		
 		showMenu();
 		
-		protagonist.Start();
+		giveStoryIntro();
 		
 		do {
-			giveStoryIntro();
+			
+			protagonist.Start();
 			
 			/* Do initial placement of character and setting of game environment here */
 			

@@ -89,6 +89,10 @@ public abstract class Actor extends Entity implements ItemCarrier{
 	
 	public boolean hasItem(Item theThing)
 	{
-		return true;
+		for (Item item : items) {
+			if (item.equals(theThing))
+				return true;
+		}
+		return false;
 	}
 }
