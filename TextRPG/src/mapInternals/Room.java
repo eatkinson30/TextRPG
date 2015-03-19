@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import main.FL;
 import rpgObjectClasses.*;
 import items.Item;
+import items.ItemCarrier;
 
-public class Room {
+public class Room implements ItemCarrier {
 	private String 
 		name,
 		desc;
@@ -81,7 +82,11 @@ public class Room {
 	public void removeItem(Item theThing)
 	{
 		items.remove(theThing);
-	}	
+	}
+	public boolean hasItem(Item theThing) {
+		
+		return false;
+	}
 	
 	public void Enter(Actor p)
 	{
