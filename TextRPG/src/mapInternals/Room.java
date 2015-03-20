@@ -48,8 +48,8 @@ public class Room implements ItemCarrier {
 			exitDoors.add(exit);
 		*/
 	}
-	// Getters and Setters //
 	
+	// Getters and Setters //
 	public ArrayList<Door> GetAllDoors()
 	{
 		return exitDoors;
@@ -103,7 +103,7 @@ public class Room implements ItemCarrier {
 		FL.PrintL(p.Name() + " has entered the " + this.name + ": " + this.desc);
 	}
 	
-	public void PlayerInput(HumanPlayer p)
+	public void PlayerTurn(HumanPlayer p)
 	{
 		int i;
 		int choice = FL.InputInt("What would you like to do? " + FL.StringifyArrayWithNumbers(playerChoices), 1, playerChoices.size());
@@ -123,8 +123,11 @@ public class Room implements ItemCarrier {
 				optionMsgs.add(otherDirection + " to " + otherRoom);
 			}
 			
-			choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs), 1, optionMsgs.size());
+			choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs), 0, optionMsgs.size());
 			--choice; // changes 1 based to 0 based indexing
+			
+			if (choice < 0) // User chooses to go back to previous menu
+				break;
 			
 			p.MoveTo(exitDoors.get(choice).GetOtherRoom(this));			
 			

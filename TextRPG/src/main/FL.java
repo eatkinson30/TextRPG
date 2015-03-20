@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 public abstract class FL {
 	
 	static Scanner keyboard = MainEntry.inputScan;
-	static final int MAX_INT = Integer.MAX_VALUE;//2147483647;
+	static final int MAX_INT = Integer.MAX_VALUE; //2147483647;
 	static NumberFormat formatCurrency = NumberFormat.getCurrencyInstance();
 	static Random rand = new Random();
 	

@@ -1,7 +1,5 @@
 package rpgObjectClasses;
 
-import items.Item;
-import items.ItemCarrier;
 import mapInternals.Room;
 
 public class HumanPlayer extends Actor {
