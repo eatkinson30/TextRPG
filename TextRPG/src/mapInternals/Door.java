@@ -4,7 +4,7 @@ import main.FL;
 
 public class Door {
 	private Room room1, room2;
-	private FL.Direction directionOnetoTwo, directionTwoToOne;
+	private FL.Direction directionOnetoTwo, directionTwoToOne;	
 
 	Door(Room room1, Room room2, FL.Direction directionOnetoTwo) {
 		this.SetRoom1(room1);
@@ -64,5 +64,10 @@ public class Door {
 		else
 			// Complain //
 			return null;
+	}
+	
+	public boolean IsLocked()
+	{
+		return false;		
 	}
 }

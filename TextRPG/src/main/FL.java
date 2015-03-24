@@ -34,7 +34,7 @@ public abstract class FL {
 		Print('\n');
 	}
 	
-	
+	// Enums //
 	public static enum Direction {
 		NORTH,
 		SOUTH,
@@ -42,6 +42,13 @@ public abstract class FL {
 		EAST,
 		LOST
 	}
+	public static enum Color {
+		BLUE,
+		RED,
+		PURPLE,
+		CLEAR
+	}
+
 	
 	public static String StringDirection(Direction d)
 	{
