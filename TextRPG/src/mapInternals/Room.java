@@ -16,13 +16,12 @@ public class Room implements ItemCarrier {
 	private ArrayList<Door> exitDoors = new ArrayList<Door>();
 	private ArrayList<Item> items = new ArrayList<Item>();
 	
-	private static final ArrayList<String> playerChoices = new ArrayList<String>(Arrays.asList("Move", "Item", "Fight"));
+	private static final ArrayList<String> playerChoices = new ArrayList<String>(Arrays.asList("Move", "Search", "Inventory"));
 	private static final int 
 		MOVE = 0,
 		ITEM = 1,
 		FIGHT = 2,
 		OTHER = 3;
-	
 	
 	Room()
 	{
@@ -103,10 +102,12 @@ public class Room implements ItemCarrier {
 		FL.PrintL(p.Name() + " has entered the " + this.name + ": " + this.desc);
 	}
 	
+	
+	// The function that handles each turn's actions //
 	public void PlayerTurn(HumanPlayer p)
 	{
 		int i;
-		int choice = FL.InputInt("What would you like to do? " + FL.StringifyArrayWithNumbers(playerChoices), 1, playerChoices.size());
+		int choice = FL.InputInt("What would you like to do? " + FL.StringifyArrayWithNumbers(playerChoices)  + "\n>> ", 1, playerChoices.size());
 		ArrayList<String> optionMsgs = new ArrayList<>();
 		
 		--choice; // changes 1 based to 0 based indexing
@@ -123,7 +124,7 @@ public class Room implements ItemCarrier {
 				optionMsgs.add(otherDirection + " to " + otherRoom);
 			}
 			
-			choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs), 0, optionMsgs.size());
+			choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
 			--choice; // changes 1 based to 0 based indexing
 			
 			if (choice < 0) // User chooses to go back to previous menu
@@ -133,7 +134,7 @@ public class Room implements ItemCarrier {
 			
 			break;
 		case ITEM:
-			System.exit(11);
+			// In progress //
 			break;
 		case FIGHT:
 			System.exit(0);

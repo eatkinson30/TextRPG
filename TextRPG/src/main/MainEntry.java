@@ -41,7 +41,7 @@ public class MainEntry {
 		
 		GameMap._GameMap();
 		
-		protagonist = new HumanPlayer(GameMap.GetRoom(GameMap.LOBBY), FL.InputString("What is your name?"), 100, 100, 100, 100);
+		protagonist = new HumanPlayer(GameMap.GetRoom(GameMap.LOBBY), FL.InputString("What is your name?\n>> "), 100, 100, 100, 100);
 		
 		showTitle();
 		
@@ -59,6 +59,8 @@ public class MainEntry {
 			do {
 				takeTurn();
 			} while (exploring);
+			
+			// Show appropriate ending and ask if the player wants to play again
 			
 		} while (continuingPlay);
 
