@@ -108,42 +108,71 @@ public class Room implements ItemCarrier {
 	{
 		int i;
 		int choice = FL.InputInt("What would you like to do? " + FL.StringifyArrayWithNumbers(playerChoices)  + "\n>> ", 1, playerChoices.size());
-		ArrayList<String> optionMsgs = new ArrayList<>();
 		
 		--choice; // changes 1 based to 0 based indexing
 		
 		FL.PrintL("You chose to " + playerChoices.get(choice));
 		
+		boolean keepGoing = false;
 		switch(choice)
 		{
 		case MOVE:
-			for (i = 0; i < exitDoors.size(); ++i)
+			do
 			{
-				String otherRoom = exitDoors.get(i).GetOtherRoom(this).GetName();
-				String otherDirection = FL.StringDirection(exitDoors.get(i).GetOtherDirection(this));
-				optionMsgs.add(otherDirection + " to " + otherRoom);
-			}
-			
-			choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
-			--choice; // changes 1 based to 0 based indexing
-			
-			if (choice < 0) // User chooses to go back to previous menu
-				break;
-			
-			p.MoveTo(exitDoors.get(choice).GetOtherRoom(this));			
+				keepGoing = PlayerMove(p);
+			} while (keepGoing);
 			
 			break;
 		case ITEM:
-			// In progress //
+			do
+			{
+				keepGoing = PlayerItem(p);
+			} while (keepGoing);
 			break;
 		case FIGHT:
 			System.exit(0);
 			break;
 		default:
-				
+			break;
+		}
+	}
+	
+	public boolean PlayerMove(HumanPlayer p)
+	{
+		ArrayList<String> optionMsgs = new ArrayList<>();
+		for (int i = 0; i < exitDoors.size(); ++i)
+		{
+			String otherRoom = exitDoors.get(i).GetOtherRoom(this).GetName();
+			String otherDirection = FL.StringDirection(exitDoors.get(i).GetOtherDirection(this));
+			optionMsgs.add(otherDirection + " to " + otherRoom);
 		}
 		
+		int choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
+		--choice; // changes 1 based to 0 based indexing
 		
+		if (choice < 0) // User chooses to go back to previous menu
+			return false;
 		
+		p.MoveTo(exitDoors.get(choice).GetOtherRoom(this));
+		return false;
+	}
+	
+	public boolean PlayerItem(HumanPlayer p)
+	{
+		ArrayList<String> optionMsgs = new ArrayList<>();
+		for (int i = 0; i < exitDoors.size(); ++i)
+		{
+			String otherRoom = exitDoors.get(i).GetOtherRoom(this).GetName();
+			String otherDirection = FL.StringDirection(exitDoors.get(i).GetOtherDirection(this));
+			optionMsgs.add(otherDirection + " to " + otherRoom);
+		}
+		
+		int choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
+		--choice; // changes 1 based to 0 based indexing
+		
+		if (choice < 0) // User chooses to go back to previous menu
+			return false;
+		
+		return false;
 	}
 }
