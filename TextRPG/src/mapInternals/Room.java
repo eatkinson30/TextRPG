@@ -16,12 +16,12 @@ public class Room implements ItemCarrier {
 	private ArrayList<Door> exitDoors = new ArrayList<Door>();
 	private ArrayList<Item> items = new ArrayList<Item>();
 	
-	private static final ArrayList<String> playerChoices = new ArrayList<String>(Arrays.asList("Move", "Search", "Inventory"));
+	private static final ArrayList<String> playerChoices = new ArrayList<String>(Arrays.asList("Move", "Search", "Inventory","Fight"));
 	private static final int 
 		MOVE = 0,
-		ITEM = 1,
-		FIGHT = 2,
-		OTHER = 3;
+		SEARCH = 1,
+		INVENTORY = 2,
+		FIGHT = 3;
 	
 	Room()
 	{
@@ -47,6 +47,13 @@ public class Room implements ItemCarrier {
 			exitDoors.add(exit);
 		*/
 	}
+	
+	// Private Functions for use in other functions //
+	int ChoiceInput(String question, ArrayList<String> optionMsgs)
+	{
+		return FL.InputInt(question + " " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
+	}
+	// // //
 	
 	// Getters and Setters //
 	public ArrayList<Door> GetAllDoors()
@@ -77,7 +84,7 @@ public class Room implements ItemCarrier {
 	public void SetBrightness(int brightnessNew) {
 		brightness = brightnessNew;
 	}
-	// Getters and Setters (end) //
+	// // //
 	
 	// Item Functions //
 	public void addItem(Item theThing)
@@ -101,9 +108,9 @@ public class Room implements ItemCarrier {
 	{
 		FL.PrintL(p.Name() + " has entered the " + this.name + ": " + this.desc);
 	}
+	// // //
 	
-	
-	// The function that handles each turn's actions //
+	// The functions that handle each turn's actions //
 	public void PlayerTurn(HumanPlayer p)
 	{
 		int i;
@@ -123,14 +130,14 @@ public class Room implements ItemCarrier {
 			} while (keepGoing);
 			
 			break;
-		case ITEM:
+		case SEARCH:
+			
+			break;
+		case INVENTORY:
 			do
 			{
-				keepGoing = PlayerItem(p);
+				keepGoing = PlayerInventory(p);
 			} while (keepGoing);
-			break;
-		case FIGHT:
-			System.exit(0);
 			break;
 		default:
 			break;
@@ -147,7 +154,7 @@ public class Room implements ItemCarrier {
 			optionMsgs.add(otherDirection + " to " + otherRoom);
 		}
 		
-		int choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
+		int choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "[0 - back]\n>> ", 0, optionMsgs.size());
 		--choice; // changes 1 based to 0 based indexing
 		
 		if (choice < 0) // User chooses to go back to previous menu
@@ -157,15 +164,9 @@ public class Room implements ItemCarrier {
 		return false;
 	}
 	
-	public boolean PlayerItem(HumanPlayer p)
+	public boolean PlayerInventory(HumanPlayer p)
 	{
 		ArrayList<String> optionMsgs = new ArrayList<>();
-		for (int i = 0; i < exitDoors.size(); ++i)
-		{
-			String otherRoom = exitDoors.get(i).GetOtherRoom(this).GetName();
-			String otherDirection = FL.StringDirection(exitDoors.get(i).GetOtherDirection(this));
-			optionMsgs.add(otherDirection + " to " + otherRoom);
-		}
 		
 		int choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
 		--choice; // changes 1 based to 0 based indexing
