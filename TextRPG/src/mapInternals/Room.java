@@ -169,6 +169,10 @@ public class Room implements ItemCarrier {
 	
 	public boolean PlayerInventory(HumanPlayer p)
 	{
+		int 
+			action,
+			itemIndex;
+		
 		ArrayList<String> optionMsgs = new ArrayList<>();
 		
 		ArrayList<Item> items = p.GetItems();
@@ -178,11 +182,14 @@ public class Room implements ItemCarrier {
 		}
 		
 		//int choice = FL.InputInt("Which item would you like to expand? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
-		int choice = FL.InputPlayerInput("Which item would you like to expand? ", optionMsgs);
-		--choice; // changes 1 based to 0 based indexing
+		itemIndex = FL.InputPlayerInput("Which item would you like to expand? ", optionMsgs, true);
+		--itemIndex; // changes 1 based to 0 based indexing
 		
-		if (choice < 0) // User chooses to go back to previous menu
+		if (itemIndex < 0) // User chooses to go back to previous menu
 			return false;
+		
+		action = FL.InputPlayerInput("What would you like to do with it? ", p.GetItems().get(itemIndex).getItemUses(), true);
+		
 		
 		return false;
 	}
