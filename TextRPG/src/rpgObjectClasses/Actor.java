@@ -1,7 +1,9 @@
 package rpgObjectClasses;
 
+import items.Armor;
 import items.Item;
 import items.ItemCarrier;
+import items.Weapon;
 
 import java.util.ArrayList;
 
@@ -54,7 +56,7 @@ public abstract class Actor extends Entity implements ItemCarrier{
 	
 	public int Damage(int damagePower, Actor attacker)
 	{
-		int damagePowerWithArmor = Math.max(damagePower - this.armor, 1);
+		int damagePowerWithArmor = Math.max(damagePower - ArmorValue(), 1);
 		this.health = Math.min(this.health - damagePowerWithArmor, 0);
 		if (this.health == 0)
 			this.Die(attacker);
@@ -63,7 +65,7 @@ public abstract class Actor extends Entity implements ItemCarrier{
 	
 	public void ATTACK(Actor enemy)
 	{
-		enemy.Damage(this.attackPower, this);
+		enemy.Damage(ModifiedAttackPower(), this);
 	}
 	
 	public void Die(Actor attacker)
@@ -82,10 +84,12 @@ public abstract class Actor extends Entity implements ItemCarrier{
 	{
 		items.add(theThing);
 	}
+	
 	public void removeItem(Item theThing)
 	{
 		items.remove(theThing);
 	}
+	
 	public boolean hasItem(Item theThing)
 	{
 		for (Item item : items) {
@@ -98,5 +102,28 @@ public abstract class Actor extends Entity implements ItemCarrier{
 	public ArrayList<Item> GetItems()
 	{
 		return items;
+	}
+	
+	public int ArmorValue()
+	{
+		int armorValue = 0;
+		for (Item item : this.items)
+		{
+			if (item.isCarried() && item instanceof Armor)
+				armorValue += ((Armor)item).Protection();
+		}
+		this.armor = armorValue;
+		return armorValue;
+	}
+	
+	public int ModifiedAttackPower()
+	{
+		int modifiedAttackPower = this.attackPower;
+		for (Item item : this.items)
+		{
+			if (item.isCarried() && item instanceof Weapon)
+				modifiedAttackPower += ((Weapon)item).DamageValue();
+		}
+		return modifiedAttackPower;
 	}
 }
