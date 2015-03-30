@@ -94,4 +94,9 @@ public abstract class Actor extends Entity implements ItemCarrier{
 		}
 		return false;
 	}
+	
+	public ArrayList<Item> GetItems()
+	{
+		return items;
+	}
 }

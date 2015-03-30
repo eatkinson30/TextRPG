@@ -9,6 +9,7 @@ package main;
 import java.text.NumberFormat;
 import java.util.*;
 import java.lang.Character;
+
 import javax.swing.JOptionPane;
 
 public abstract class FL {
@@ -117,6 +118,22 @@ public abstract class FL {
 	
 	public static int InputInt(String msg) {
 		return InputInt(msg, -MAX_INT, MAX_INT);
+	}
+	
+	public static int InputPlayerInput(String msg, ArrayList<String> options, boolean includeBackOption)
+	{
+		ArrayList<String> newOptions = new ArrayList<String>();
+		if (includeBackOption)
+			newOptions.add("Back");
+		for (String str : options)
+			newOptions.add(str);
+		
+		return InputInt(msg + FL.StringifyArrayWithNumbers(newOptions, includeBackOption)  + "\n>> ",  includeBackOption ? 0 : 1, options.size() + (includeBackOption ? 1 : 0));
+	}
+	
+	public static int InputPlayerInput(String msg, ArrayList<String> options)
+	{
+		return InputPlayerInput(msg, options, false);
 	}
 	
 	public static String InputString(String msg, boolean showAcceptedValues, ArrayList<String> acceptedValues)
@@ -232,13 +249,13 @@ public abstract class FL {
 	}
 	*/
 	
-	public static String StringifyArrayWithNumbers(ArrayList<String> data) {
+	public static String StringifyArrayWithNumbers(ArrayList<String> data, boolean zeroBased) {
 		if (data.size() == 0)
 			return "EMPTY";
 		else {
 			String str = "[";
 			for (int i = 0; i < data.size(); i++) {
-				str += String.valueOf(i + 1) + ". ";
+				str += String.valueOf(i + (zeroBased ? 0 : 1)) + ". ";
 				str += String.valueOf(data.get(i));
 				if (i < data.size() - 1)
 					str += ", ";
@@ -247,6 +264,11 @@ public abstract class FL {
 			}
 			return str;
 		}
+	}
+	
+	public static String StringifyArrayWithNumbers(ArrayList<String> data)
+	{
+		return StringifyArrayWithNumbers(data, false);
 	}
 	
 	

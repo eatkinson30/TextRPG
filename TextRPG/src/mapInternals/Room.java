@@ -114,7 +114,7 @@ public class Room implements ItemCarrier {
 	public void PlayerTurn(HumanPlayer p)
 	{
 		int i;
-		int choice = FL.InputInt("What would you like to do? " + FL.StringifyArrayWithNumbers(playerChoices)  + "\n>> ", 1, playerChoices.size());
+		int choice = FL.InputPlayerInput("What would you like to do? ", playerChoices);
 		
 		--choice; // changes 1 based to 0 based indexing
 		
@@ -154,11 +154,14 @@ public class Room implements ItemCarrier {
 			optionMsgs.add(otherDirection + " to " + otherRoom);
 		}
 		
-		int choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "[0 - back]\n>> ", 0, optionMsgs.size());
+		int choice = FL.InputPlayerInput("Where would you like to move? ", optionMsgs, true);
 		--choice; // changes 1 based to 0 based indexing
 		
 		if (choice < 0) // User chooses to go back to previous menu
+		{
+			FL.PrintL("YOU CHOSE TO MOVE BACK!");
 			return false;
+		}
 		
 		p.MoveTo(exitDoors.get(choice).GetOtherRoom(this));
 		return false;
@@ -168,7 +171,14 @@ public class Room implements ItemCarrier {
 	{
 		ArrayList<String> optionMsgs = new ArrayList<>();
 		
-		int choice = FL.InputInt("Where would you like to move? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
+		ArrayList<Item> items = p.GetItems();
+		for (int i = 0; i < items.size(); i++)
+		{
+			optionMsgs.add(items.toString());
+		}
+		
+		//int choice = FL.InputInt("Which item would you like to expand? " + FL.StringifyArrayWithNumbers(optionMsgs)  + "\n>> ", 0, optionMsgs.size());
+		int choice = FL.InputPlayerInput("Which item would you like to expand? ", optionMsgs);
 		--choice; // changes 1 based to 0 based indexing
 		
 		if (choice < 0) // User chooses to go back to previous menu
