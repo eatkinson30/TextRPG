@@ -10,12 +10,15 @@ import mapInternals.Room;
 
 public abstract class Item extends Entity
 {
+	protected ItemCarrier source = null;
 	protected boolean carried;
 	protected ArrayList<String> itemUses = new ArrayList<String>(Arrays.asList("Examine", "Drop"));
 	
-	public Item(Room startingLocation, String name)
+	public Item(ItemCarrier startingLocation, String name)
 	{
 		super(name);
+		
+		moveTo(startingLocation);
 		
 		carried = false;
 	}
@@ -56,13 +59,14 @@ public abstract class Item extends Entity
 	
 	protected void DropAction(Actor character) // Removes item from inventory to the enclosing Room
 	{
-			move(character, character.WhereBeThis());
+			moveTo(character.WhereBeThis());
 	}
 	// // //
 	
-	public void move(ItemCarrier source, ItemCarrier destination) // Moves item from source into the destination
+	public void moveTo(ItemCarrier destination) // Moves item from source into the destination
 	{
-		source.removeItem(this);
+		if (source != null) source.removeItem(this);
 		destination.addItem(this);
+		source = destination;
 	}	
 }

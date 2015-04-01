@@ -1,5 +1,6 @@
 package mapInternals;
 
+import rpgObjectClasses.Actor;
 import main.FL;
 
 public class Door {
@@ -67,7 +68,7 @@ public class Door {
 			return null;
 	}
 	
-	public boolean IsLocked()
+	public boolean IsPassableFor(Actor character)
 	{
 		return false;		
 	}

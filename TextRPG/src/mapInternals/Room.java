@@ -171,6 +171,7 @@ public class Room implements ItemCarrier {
 			optionMsgs.add(otherDirection + " to " + otherRoom);
 		}
 		
+		
 		int choice = FL.InputPlayerInput("Where would you like to move? ", optionMsgs, true);
 		--choice; // changes 1 based to 0 based indexing
 		
