@@ -1,11 +1,13 @@
 package mapInternals;
 
+import items.Keycard;
 import rpgObjectClasses.Actor;
 import main.FL;
 import main.FL.Direction;
 
 public class LockedDoor extends Door {
 	private FL.Color color;
+	private Keycard key;
 	
 	// Constructors //
 	public LockedDoor(Room room1, Room room2, Direction directionOnetoTwo, FL.Color color) {
@@ -32,6 +34,6 @@ public class LockedDoor extends Door {
 	
 	public boolean IsPassableFor(Actor character)
 	{
-		return 
+		return character.GetItems().contains(key);
 	}
 }
