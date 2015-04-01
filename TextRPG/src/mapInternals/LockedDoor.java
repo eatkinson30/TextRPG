@@ -4,16 +4,30 @@ import main.FL;
 import main.FL.Direction;
 
 public class LockedDoor extends Door {
-
+	private FL.Color color;
+	
+	// Constructors //
 	public LockedDoor(Room room1, Room room2, Direction directionOnetoTwo, FL.Color color) {
 		super(room1, room2, directionOnetoTwo);
-		// TODO Auto-generated constructor stub
+		this.setColor(color);
 	}
 
 	public LockedDoor(Room room1, Room room2, Direction directionOnetoTwo,
-			Direction directionTwoToOne) {
+			Direction directionTwoToOne, FL.Color color) {
 		super(room1, room2, directionOnetoTwo, directionTwoToOne);
-		// TODO Auto-generated constructor stub
+		this.setColor(color);
+	}
+	// // //
+	
+	// Getters and Setters //
+	public FL.Color getColor() {
+		return color;
 	}
 
+	public void setColor(FL.Color color) {
+		this.color = color;
+	}
+	// // //
+	
+	
 }

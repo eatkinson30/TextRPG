@@ -3,17 +3,18 @@ package mapInternals;
 import main.FL;
 
 public class Door {
-	private Room room1, room2;
-	private FL.Direction directionOnetoTwo, directionTwoToOne;	
+	protected Room room1, room2;
+	protected FL.Direction directionOnetoTwo;
+	protected FL.Direction directionTwoToOne;	
 
-	Door(Room room1, Room room2, FL.Direction directionOnetoTwo) {
+	public Door(Room room1, Room room2, FL.Direction directionOnetoTwo) {
 		this.SetRoom1(room1);
 		this.SetRoom2(room2);
 		this.directionOnetoTwo = directionOnetoTwo;
 		this.directionTwoToOne = FL.FlipDirection(directionOnetoTwo);
 	}	
 	
-	Door(Room room1, Room room2, FL.Direction directionOnetoTwo, FL.Direction directionTwoToOne) {
+	public Door(Room room1, Room room2, FL.Direction directionOnetoTwo, FL.Direction directionTwoToOne) {
 		this.SetRoom1(room1);
 		this.SetRoom2(room2);
 		this.directionOnetoTwo = directionOnetoTwo;
