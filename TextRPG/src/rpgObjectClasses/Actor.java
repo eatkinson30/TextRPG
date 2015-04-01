@@ -75,7 +75,7 @@ public abstract class Actor extends Entity implements ItemCarrier{
 		Room here = this.WhereBeThis();
 		for (Item item : this.items)
 		{
-			item.move(this, here);
+			item.moveTo(here);
 		}
 	}
 	
