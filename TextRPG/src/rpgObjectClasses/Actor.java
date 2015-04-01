@@ -109,7 +109,7 @@ public abstract class Actor extends Entity implements ItemCarrier{
 		int armorValue = 0;
 		for (Item item : this.items)
 		{
-			if (item.isCarried() && item instanceof Armor)
+			if (item.isCarried() && item instanceof Armor && ((Armor)item).IsWearing())
 				armorValue += ((Armor)item).Protection();
 		}
 		this.armor = armorValue;
@@ -121,9 +121,33 @@ public abstract class Actor extends Entity implements ItemCarrier{
 		int modifiedAttackPower = this.attackPower;
 		for (Item item : this.items)
 		{
-			if (item.isCarried() && item instanceof Weapon)
+			if (item.isCarried() && item instanceof Weapon && ((Weapon)item).IsUsing())
 				modifiedAttackPower += ((Weapon)item).DamageValue();
 		}
 		return modifiedAttackPower;
+	}
+	
+	public void EquipArmor(Armor armor)
+	{
+		for (Item item : this.items)
+		{
+			if (item.isCarried() && item instanceof Armor)
+			{
+				Armor armorItem = (Armor)item;
+				armorItem.SetIsWearing(armorItem.equals(armor));
+			}
+		}
+	}
+	
+	public void EquipWeapon(Weapon weapon)
+	{
+		for (Item item : this.items)
+		{
+			if (item.isCarried() && item instanceof Weapon)
+			{
+				Weapon weaponItem = (Weapon)item;
+				weaponItem.SetIsUsing(weaponItem.equals(weapon));
+			}
+		}
 	}
 }
