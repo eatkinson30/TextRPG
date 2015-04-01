@@ -6,7 +6,7 @@ public class Armor extends Item {
 	protected int protection;
 	protected boolean isWearing;
 	
-	public Armor(Room startingLocation, String name, int protection) {
+	public Armor(ItemCarrier startingLocation, String name, int protection) {
 		super(startingLocation, name);
 		this.protection = protection;
 		this.isWearing = false;

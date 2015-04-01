@@ -97,7 +97,9 @@ public class GameMap {
 		rooms.get(4).GetAllDoors().add(temp);
 		rooms.get(5).GetAllDoors().add(temp);
 		
-		enemies.add(new Enemy(rooms.get(WESTWING), "BOSS", 100, 10));
+		Enemy BOSS = new Enemy(rooms.get(WESTWING), "BOSS", 100, 10);
+		BOSS.addItem(new Weapon(BOSS));
+		enemies.add(BOSS);
 	}
 	
 	public static Room GetRoom(int index)

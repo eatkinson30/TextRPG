@@ -8,7 +8,7 @@ public class Weapon extends Item {
 	protected int criticalHitDamage;
 	protected boolean isUsing;
 	
-	public Weapon(Room startingLocation, String name, int damage, int criticalHitDamage, float criticalHitChance) {
+	public Weapon(ItemCarrier startingLocation, String name, int damage, int criticalHitDamage, float criticalHitChance) {
 		super(startingLocation, name);
 		this.damage = damage;
 		this.criticalHitDamage = criticalHitDamage;

@@ -240,6 +240,13 @@ public class Room implements ItemCarrier {
 			return false;
 		}
 		
-		return p.ATTACK(enemies.get(choice));
+		Enemy enemy = enemies.get(choice);
+		if (p.ATTACK(enemy)) //Enemy is STILL ALIVE
+			return true;
+		else
+		{
+			GameMap.enemies.remove(enemy);
+			return false;
+		}
 	}
 }

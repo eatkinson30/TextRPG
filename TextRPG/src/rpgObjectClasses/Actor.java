@@ -72,6 +72,11 @@ public abstract class Actor extends Entity implements ItemCarrier{
 	public void Die(Actor attacker)
 	{
 		FL.PrintL(attacker.Name() + " has slain " + this.Name());
+		Room here = this.WhereBeThis();
+		for (Item item : this.items)
+		{
+			item.move(this, here);
+		}
 	}
 	
 	public void PickUpItem(Item item)
