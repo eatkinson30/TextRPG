@@ -16,7 +16,6 @@ public abstract class Actor extends Entity implements ItemCarrier{
 	protected int health;
 	protected int maxHealth;
 	protected int attackPower;
-	protected int attackSpeed;
 	protected int armor;
 	protected ArrayList<Item> items;
 	protected Room location;
@@ -32,15 +31,14 @@ public abstract class Actor extends Entity implements ItemCarrier{
 		location.Enter(this);
 	}
 	
-	Actor(Room startingLocation, String name, int health, int attackPower, int attackSpeed, int armor)
+	Actor(Room startingLocation, String name, int health, int attackPower)
 	{
 		super(name);
 		location = startingLocation;
 		this.health = health;
 		this.maxHealth = health;
 		this.attackPower = attackPower;
-		this.attackSpeed = attackSpeed;
-		this.armor = armor;
+		this.armor = 0;
 		this.items = new ArrayList<Item>();
 	}
 
@@ -57,15 +55,18 @@ public abstract class Actor extends Entity implements ItemCarrier{
 	public int Damage(int damagePower, Actor attacker)
 	{
 		int damagePowerWithArmor = Math.max(damagePower - ArmorValue(), 1);
-		this.health = Math.min(this.health - damagePowerWithArmor, 0);
-		if (this.health == 0)
+		this.health = this.health - damagePowerWithArmor;
+		FL.PrintL(this.Name() + " has been attacked by " + attacker.Name() + " and now has " + this.health + " health");
+		if (this.health <= 0)
 			this.Die(attacker);
 		return this.health;
 	}
 	
-	public void ATTACK(Actor enemy)
+	public boolean ATTACK(Actor enemy)
 	{
-		enemy.Damage(ModifiedAttackPower(), this);
+		int power = ModifiedAttackPower();
+		FL.PrintL(this.Name() + " is attacking " + enemy.Name() + " for " + power + " damage.");
+		return enemy.Damage(power, this) > 0;
 	}
 	
 	public void Die(Actor attacker)

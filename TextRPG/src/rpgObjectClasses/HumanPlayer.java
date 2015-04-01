@@ -4,8 +4,8 @@ import mapInternals.Room;
 
 public class HumanPlayer extends Actor {
 
-	public HumanPlayer(Room startingLocation, String name, int health, int attackPower, int attackSpeed, int armor) {
-		super(startingLocation, name, health, attackPower, attackSpeed, armor);
+	public HumanPlayer(Room startingLocation, String name, int health, int attackPower) {
+		super(startingLocation, name, health, attackPower);
 	}
 	
 	public void Start()

@@ -2,6 +2,8 @@ package mapInternals;
 
 import java.util.ArrayList;
 
+import rpgObjectClasses.Actor;
+import rpgObjectClasses.Enemy;
 import main.FL.Direction;
 
 /*
@@ -10,6 +12,7 @@ import main.FL.Direction;
 public class GameMap {
 	private static ArrayList<Room> rooms;
 	private static ArrayList<Door> doors;
+	public static ArrayList<Enemy> enemies;
 	public static final int howManyRooms = 25; // it could be any other number we decide
 	
 	public static final int
@@ -33,6 +36,7 @@ public class GameMap {
 		
 		rooms = new ArrayList<Room>(25);
 		doors = new ArrayList<Door>(25);
+		enemies = new ArrayList<Enemy>();
 		
 		// Initializes Rooms //
 		rooms.add(LOBBY, new Room("Lobby", // 0
@@ -92,6 +96,8 @@ public class GameMap {
 		temp = new Door(rooms.get(4), rooms.get(5), Direction.SOUTH, Direction.NORTH); // Connects West Hall and Robot Cell
 		rooms.get(4).GetAllDoors().add(temp);
 		rooms.get(5).GetAllDoors().add(temp);
+		
+		enemies.add(new Enemy(rooms.get(WESTWING), "BOSS", 100, 10));
 	}
 	
 	public static Room GetRoom(int index)

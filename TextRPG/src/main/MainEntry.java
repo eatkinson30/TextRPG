@@ -41,7 +41,7 @@ public class MainEntry {
 		
 		GameMap._GameMap();
 		
-		protagonist = new HumanPlayer(GameMap.GetRoom(GameMap.LOBBY), FL.InputString("What is your name?\n>> "), 100, 100, 100, 100);
+		protagonist = new HumanPlayer(GameMap.GetRoom(GameMap.LOBBY), FL.InputString("What is your name?\n>> "), 100, 5);
 		
 		showTitle();
 		
