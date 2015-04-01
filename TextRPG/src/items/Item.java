@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import rpgObjectClasses.Entity;
+import main.FL;
 import mapInternals.Room;
 
 public abstract class Item extends Entity
