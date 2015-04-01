@@ -60,6 +60,17 @@ public class Room implements ItemCarrier {
 	{
 		return exitDoors;
 	}
+	
+	public ArrayList<Enemy> GetAllEnemies()
+	{
+		ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+		for (Enemy enemy : GameMap.enemies)
+		{
+			if (enemy.WhereBeThis().equals(this))
+				enemies.add(enemy);
+		}
+		return enemies;
+	}
 
 	public String GetName() {
 		return name;
@@ -139,6 +150,12 @@ public class Room implements ItemCarrier {
 				keepGoing = PlayerInventory(p);
 			} while (keepGoing);
 			break;
+		case FIGHT:
+			do
+			{
+				keepGoing = PlayerFight(p);
+			} while (keepGoing);
+			break;
 		default:
 			break;
 		}
@@ -192,5 +209,37 @@ public class Room implements ItemCarrier {
 		
 		
 		return false;
+	}
+	
+	public boolean PlayerFight(HumanPlayer p)
+	{
+		ArrayList<String> optionMsgs = new ArrayList<>();
+		ArrayList<Enemy> enemies = GetAllEnemies();
+		int choice;
+		
+		if (enemies.size() > 0)
+		{
+			for (int i = 0; i < enemies.size(); ++i)
+			{
+				//String otherRoom = enemies.get(i).GetOtherRoom(this).GetName();
+				//String otherDirection = FL.StringDirection(enemies.get(i).GetOtherDirection(this));
+				optionMsgs.add(enemies.get(i).Name());
+			}
+		
+			choice = FL.InputPlayerInput("Who would you like to fight", optionMsgs, true);
+		}
+		else
+		{
+			choice = FL.InputPlayerInput("There are no enemies to fight", optionMsgs, true);
+		}
+		--choice; // changes 1 based to 0 based indexing
+		
+		if (choice < 0) // User chooses to go back to previous menu
+		{
+			FL.PrintL("YOU CHOSE TO DO ANOTHER ACTION!");
+			return false;
+		}
+		
+		return p.ATTACK(enemies.get(choice));
 	}
 }
