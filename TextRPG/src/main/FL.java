@@ -128,7 +128,7 @@ public abstract class FL {
 		for (String str : options)
 			newOptions.add(str);
 		
-		return InputInt(msg + FL.StringifyArrayWithNumbers(newOptions, includeBackOption)  + "\n>> ",  includeBackOption ? 0 : 1, options.size() + (includeBackOption ? 1 : 0));
+		return InputInt(msg + FL.StringifyArrayWithNumbers(newOptions, includeBackOption)  + "\n>> ",  includeBackOption ? 0 : 1, options.size());
 	}
 	
 	public static int InputPlayerInput(String msg, ArrayList<String> options)
