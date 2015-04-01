@@ -1,5 +1,6 @@
 package mapInternals;
 
+import rpgObjectClasses.Actor;
 import main.FL;
 import main.FL.Direction;
 
@@ -29,5 +30,8 @@ public class LockedDoor extends Door {
 	}
 	// // //
 	
-	
+	public boolean IsPassableFor(Actor character)
+	{
+		return 
+	}
 }
