@@ -32,6 +32,6 @@ public class LockedDoor extends Door {
 	
 	public boolean IsPassableFor(Actor character)
 	{
-		return 
+		return true;
 	}
 }

@@ -1,5 +1,7 @@
 package mapInternals;
 
+import items.Weapon;
+
 import java.util.ArrayList;
 
 import rpgObjectClasses.Actor;
@@ -98,7 +100,7 @@ public class GameMap {
 		rooms.get(5).GetAllDoors().add(temp);
 		
 		Enemy BOSS = new Enemy(rooms.get(WESTWING), "BOSS", 100, 10);
-		BOSS.addItem(new Weapon(BOSS));
+		BOSS.addItem(new Weapon(BOSS, "WEAPON OF AWESOME", 10, 500, .1f));
 		enemies.add(BOSS);
 	}
 	
