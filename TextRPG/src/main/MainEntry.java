@@ -1,6 +1,4 @@
 package main;
-//import java.util.AbstractMap;
-//import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -15,7 +13,7 @@ import rpgObjectClasses.HumanPlayer;
  * Programmers: Edward Atkinson & Delun Shi
  * Text Adventure RPG
  * Date Started: 2/27/15
- * 
+ * Current Date: 5/13/15
  * This will be where our main function will be
  */
 public class MainEntry {
