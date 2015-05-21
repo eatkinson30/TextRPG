@@ -23,7 +23,6 @@ public class ChoiceMenu {
 			elements.add(l[counter]);
 		}
 	}
-	
 
 	public static int InputPlayerInput(String msg, ArrayList<String> options, boolean includeBackOption)
 	{
