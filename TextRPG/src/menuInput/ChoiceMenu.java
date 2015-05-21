@@ -10,6 +10,11 @@ import main.FL;
  * Middle stuff added
  * 
  * newer asdf and stuff
+ * 
+ * Much new stuff entered the scene
+ * 
+ * Other stuff also came along with him
+ * 
  */
 public class ChoiceMenu {
 	private List<String> elements; 
