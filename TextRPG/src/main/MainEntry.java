@@ -15,6 +15,7 @@ import rpgObjectClasses.HumanPlayer;
  * Date Started: 2/27/15
  * Current Date: 5/15/15
  * This will be where our main function will be
+ * PLEASE UPDATE AND STUFF
  */
 public class MainEntry {
 	public static Scanner inputScan = new Scanner(System.in);
