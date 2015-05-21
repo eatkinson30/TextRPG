@@ -7,9 +7,10 @@ import main.FL;
 /*
  * asedf asdf asdf 
  * 
- * Middle stuff added
- * 
  * newer asdf and stuff
+ * 
+ * 
+ * NUUUUUUUUUUUUUUUU
  */
 public class ChoiceMenu {
 	private List<String> elements; 
