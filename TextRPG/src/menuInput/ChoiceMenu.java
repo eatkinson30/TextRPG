@@ -4,16 +4,22 @@ import java.util.List;
 import java.util.ArrayList;
 
 import main.FL;
-/*
- * asedf asdf asdf 
- * 
- * newer asdf and stuff
- * 
- * 
- * NUUUUUUUUUUUUUUUU
- */
+
 public class ChoiceMenu {
-	private List<String> elements; 
+	private List<String> elements;
+	
+	
+	// Getters Setters //
+	
+	private String get
+	
+	// Member Functions //
+	
+	
+	
+	
+	
+	// Static Functions //
 	
 	public ChoiceMenu() {
 		elements = new ArrayList<String>();

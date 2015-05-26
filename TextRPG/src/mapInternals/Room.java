@@ -8,7 +8,7 @@ import rpgObjectClasses.*;
 import items.Item;
 import items.ItemCarrier;
 
-public class Room implements ItemCarrier {
+public class Room implements ItemCarrier, ActorCarrier {
 	private String 
 		name,
 		desc;

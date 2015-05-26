@@ -2,6 +2,8 @@ package rpgObjectClasses;
 
 import mapInternals.Room;
 
+
+
 public class HumanPlayer extends Actor {
 
 	public HumanPlayer(Room startingLocation, String name, int health, int attackPower) {
@@ -12,4 +14,14 @@ public class HumanPlayer extends Actor {
 	{
 		this.location.Enter(this);
 	}
+	
+	public boolean MoveTo(ActorCarrier destination) {
+		if (destination instanceof Room) {
+			location = (Room)destination;
+			return true;
+		}
+		else
+			return false;
+	}
+	
 }

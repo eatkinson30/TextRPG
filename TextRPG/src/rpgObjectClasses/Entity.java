@@ -17,4 +17,6 @@ public abstract class Entity {
 	{
 		return this.name;
 	}
+	
+	//public abstract boolean MoveTo(EntityCarrier destination);
 }

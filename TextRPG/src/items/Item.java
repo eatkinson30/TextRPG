@@ -8,7 +8,7 @@ import rpgObjectClasses.Entity;
 import main.FL;
 import mapInternals.Room;
 
-public abstract class Item extends Entity
+public abstract class Item extends Entity implements main.Moveable<ItemCarrier>
 {
 	protected ItemCarrier source = null;
 	protected boolean carried;
@@ -18,7 +18,7 @@ public abstract class Item extends Entity
 	{
 		super(name);
 		
-		moveTo(startingLocation);
+		MoveTo(startingLocation);
 		
 		carried = false;
 	}
@@ -59,14 +59,15 @@ public abstract class Item extends Entity
 	
 	protected void DropAction(Actor character) // Removes item from inventory to the enclosing Room
 	{
-			moveTo(character.WhereBeThis());
+			MoveTo(character.WhereBeThis());
 	}
 	// // //
 	
-	public void moveTo(ItemCarrier destination) // Moves item from source into the destination
+	public boolean MoveTo(ItemCarrier destination) // Moves item from source into the destination
 	{
 		if (source != null) source.removeItem(this);
 		destination.addItem(this);
 		source = destination;
+		return true;
 	}	
 }
