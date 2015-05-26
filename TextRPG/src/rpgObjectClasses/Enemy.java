@@ -8,4 +8,13 @@ public class Enemy extends Actor {
 		super(startingLocation, name, health, attackPower);
 	}
 
+	public boolean MoveTo(ActorCarrier destination) {
+		if (destination instanceof Room) {
+			location = (Room)destination;
+			return true;
+		}
+		else
+			return false;
+	}
+
 }

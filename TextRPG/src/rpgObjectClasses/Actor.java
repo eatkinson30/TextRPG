@@ -5,14 +5,16 @@ import items.Item;
 import items.ItemCarrier;
 import items.Weapon;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 import main.FL;
+import main.Moveable;
 import mapInternals.Room;
 /*
  * Class for living creatures with health
  */
-public abstract class Actor extends Entity implements ItemCarrier{
+public abstract class Actor extends Entity implements ItemCarrier, Moveable<ActorCarrier> {
 	protected int health;
 	protected int maxHealth;
 	protected int attackPower;
@@ -23,12 +25,6 @@ public abstract class Actor extends Entity implements ItemCarrier{
 	public Room WhereBeThis()
 	{
 		return location;
-	}
-
-	public void MoveTo(Room locationNew)
-	{
-		location = locationNew;
-		location.Enter(this);
 	}
 	
 	Actor(Room startingLocation, String name, int health, int attackPower)
@@ -41,6 +37,8 @@ public abstract class Actor extends Entity implements ItemCarrier{
 		this.armor = 0;
 		this.items = new ArrayList<Item>();
 	}
+	
+	public abstract boolean MoveTo(ActorCarrier destination);
 
 	public int Health()
 	{
@@ -75,7 +73,7 @@ public abstract class Actor extends Entity implements ItemCarrier{
 		Room here = this.WhereBeThis();
 		for (Item item : this.items)
 		{
-			item.moveTo(here);
+			item.MoveTo(here);
 		}
 	}
 	
