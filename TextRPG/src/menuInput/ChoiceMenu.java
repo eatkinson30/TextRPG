@@ -11,7 +11,7 @@ public class ChoiceMenu {
 	
 	// Getters Setters //
 	
-	private String get
+	//private String get
 	
 	// Member Functions //
 	
